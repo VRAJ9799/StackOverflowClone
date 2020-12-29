@@ -1,0 +1,43 @@
+﻿@model List<StackOverflowClone.ViewModels.QuestionViewModel>
+@{ 
+    ViewBag.Title = "Home";
+}
+
+    
+
+<div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+                <h1>Learn, share, Build!!! </h1>
+                <h3>Each Month,over 50 million developers come to stack overflow to learn,share their knowledge, build their careers</h3>
+                <p class="lead">Join the world's largest developer community.</p>
+            </div>
+        </div>
+    </div>
+<div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <tr>
+                    <th>Votes</th>
+                    <th>Answers</th>
+                    <th>Views</th>
+                    <th>Question</th>
+                    <th>Uploaded By</th>
+                    <th>Uploaded On</th>
+
+                </tr>
+                @foreach(var item in Model)
+                {
+                    Html.RenderPartial("Question", item);
+                }
+            </table>
+            @if(Session["CurrentUserName"]!=null)
+            {
+                <a href="/questions/create" class="btn btn-primary">Ask Question</a>
+            }
+        </div>
+    </div>
+
+<script>
+    $("a[href='home/index']").attr("id", "active");
+</script>
